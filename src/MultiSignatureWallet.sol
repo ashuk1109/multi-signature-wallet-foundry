@@ -2,7 +2,7 @@
 pragma solidity ^0.8.18;
 
 interface MultiSignatureWalletEvents {
-    /** Evnets */
+    /** Events */
     event TxSubmitted(
         uint256 indexed txIndex,
         address to,
@@ -16,7 +16,7 @@ interface MultiSignatureWalletEvents {
 }
 
 contract MultiSignatureWallet is MultiSignatureWalletEvents {
-    /** Erros */
+    /** Errors */
     error MultiSignatureWallet__OnlyOwner();
     error MultiSignatureWallet__InvalidTxId();
     error MultiSignatureWallet__TxAlreadyApproved();
