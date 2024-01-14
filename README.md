@@ -1,4 +1,14 @@
-## Foundry
+## Multi Singature Wallet Contract
+
+This smart contract demonstrated a multi signature wallet written in solidity
+and tested using the *foundry framework*.
+
+## Features
+- The contract allows multiple owners to collectively control the funds in the wallet.
+- Each owner is a unique address with his own private key.
+- A specified number of approvals are required to execute transactions.
+- Only owners can submit, approve and cancel non-executed transactions.
+- If an approved contract gets cancelled by all approvers, i.e. it has 0 approvals, it is removed from the contract.
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
