@@ -1,4 +1,4 @@
-## Multi Singature Wallet Contract
+## Multi Signature Wallet Contract
 
 This smart contract demonstrated a multi signature wallet written in solidity
 and tested using the *foundry framework*.
