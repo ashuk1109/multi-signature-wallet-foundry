@@ -10,18 +10,10 @@ and tested using the *foundry framework*.
 - Only owners can submit, approve and cancel non-executed transactions.
 - If an approved contract gets cancelled by all approvers, i.e. it has 0 approvals, it is removed from the contract.
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+### About the Contract
+The MultiSignatureWallet contract comprises to predefined owners (while deploying) who collectively control the flow of funds through the contract using a number game i.e. a predefined approval number required for executing the contract. Only the owners have the right to submit, approve or cancel their approval for the contract.  <br>
+Owners cannot re-approve a transaction, they can only cancel their approval in this case. Similarly, owners cannot execute a transaction until it has received the required number of approvals. One thing I have added on is when a owner cancels his approval and say if at the same time, the approvals for that specific transaction get to 0, the transaction is automatically removed from the transactions buffer as well as any amount transferred to the contract is reverted back to the submitter because this felt natural as if all owners have revoked their approvals, which means they don't want this transaction to proceed at all. 
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
 
 ## Usage
 
@@ -58,7 +50,7 @@ $ anvil
 ### Deploy
 
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+$ forge script script/DeployMultiSingatureWallet.s.sol --rpc-url <your_rpc_url> --private-key <your_private_key>
 ```
 
 ### Cast
@@ -74,3 +66,7 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+## Documentation
+
+https://book.getfoundry.sh/

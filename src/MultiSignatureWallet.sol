@@ -123,6 +123,12 @@ contract MultiSignatureWallet is MultiSignatureWalletEvents {
         emit TxSubmitted(txIndex, _to, _value, _data);
     }
 
+    /**
+     * @dev Function to approve a transaction, only callable by the owner
+     * if a valid transaction id is provided.
+     * Will revert if the transaction has already been executed, or if
+     * the owner has already approved the txn
+     */
     function approveTranscation(
         uint256 _txIndex
     )
@@ -139,6 +145,11 @@ contract MultiSignatureWallet is MultiSignatureWalletEvents {
         emit TxApproved(_txIndex, msg.sender);
     }
 
+    /**
+     * @dev Function to execute a transaction, only callable by the owner on
+     * transactions which are valid and not executed, as well as have the required
+     * number of approvals from the owners.
+     */
     function executeTransaction(
         uint256 _txIndex
     ) public payable onlyOwner validTx(_txIndex) notExecuted(_txIndex) {
